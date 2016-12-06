@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: cpu-sysrq
+  namespace: kube-system
+spec:
+  template:
+    metadata:
+      name: cpu-sysrq
+      annotations:
+        scheduler.alpha.kubernetes.io/critical-pod: ""
+        scheduler.alpha.kubernetes.io/tolerations: '[{"key":"CriticalAddonsOnly", "operator":"Exists"}]'
+      labels:
+        daemon: cpu-sysrq
+    spec:
+      containers:
+        - name: cpu-sysrq
+          image: vish/cpu-sysrq
+          securityContext:
+            privileged: true
+          args:
+            - --logtostderr
+            - --trigger-percent=10
+            - --sysrq=l
+            - --period=50ms
+            - --v=1
+      
