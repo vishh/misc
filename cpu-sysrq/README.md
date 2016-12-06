@@ -9,4 +9,3 @@ This program triggers a configurable sysrq whenever cpu availability is below a 
 ### Using Docker
 
 `docker run --rm -it --privileged vish/cpu-sysrq --help`
-

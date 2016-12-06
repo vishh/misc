@@ -14,4 +14,8 @@ push:
 	@echo ">>pushing vish/cpu-sysrq:$(tag)"
 	@docker push vish/cpu-sysrq:$(tag)
 
+push-latest:
+	@docker tag vish/cpu-sysrq:$(tag) vish/cpu-sysrq:latest
+	@docker push vish/cpu-sysrq:latest
+
 .PHONY: all build docker push
