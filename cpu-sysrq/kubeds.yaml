@@ -16,6 +16,9 @@ spec:
       containers:
         - name: cpu-sysrq
           image: vish/cpu-sysrq
+          resources:
+            requests:
+              cpu: 100m
           securityContext:
             privileged: true
           args:
